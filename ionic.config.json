@@ -1,0 +1,7 @@
+{
+  "name": "EasyV2rayFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
