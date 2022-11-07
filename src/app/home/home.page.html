@@ -1,20 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title size="large">Easy V2ray</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+  
+  <ion-list>
+    <ion-item *ngFor="let item of servers" >
+      <div>
+        <ion-label>item.name</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-label *ngIf="!servers||!servers.length">
+   {{'noServer' | translate}}
+  </ion-label>
+</div>
+     <ion-fab (click)="addServer()" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button size="small" >
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+     </ion-fab>
 </ion-content>

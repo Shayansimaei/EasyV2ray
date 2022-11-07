@@ -1,3 +1,5 @@
+import { ServerModalComponent } from './server-modal/server-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -12,8 +14,9 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    TranslateModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,ServerModalComponent]
 })
 export class HomePageModule {}
