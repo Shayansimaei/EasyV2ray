@@ -3,10 +3,10 @@ import { v1 as uuidv1 } from 'uuid';
 export class DbManger {
     constructor() {
     }
-    readAll(): Server[] {
-        return (JSON.parse(localStorage.getItem("servers")) as Server[]);
+    readAll() {
+        return JSON.parse(localStorage.getItem("servers"));
     }
-    newServer():Server {
+    newServer() {
        let server= new Server();
        server.id=uuidv1();
        return server;

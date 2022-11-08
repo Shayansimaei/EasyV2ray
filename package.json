@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "build": "tsc main.ts && ionic build && electron-builder -nwl ",
-    "start": "tsc main.ts && ionic build && electron . "
+    "build": "ionic build && electron-builder -nwl ",
+    "start": "ionic build && electron . "
   },
   "repository": {
     "type": "git",
@@ -46,11 +46,13 @@
     "@ionic/angular": "^6.1.9",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "dyna-guid": "^2.1.2",
+    "electron-ssh2": "^0.1.2",
     "ionicons": "^6.0.3",
+    "node-csv-parse": "^1.2.0",
     "rxjs": "~6.6.0",
-    "ssh-exec": "^2.0.0",
+    "simple-ssh": "^1.1.0",
     "tslib": "^2.2.0",
-    "uuid": "^9.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
