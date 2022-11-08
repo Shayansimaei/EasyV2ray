@@ -1,7 +1,8 @@
+import { StrogeManagerService } from './../stroge-manager.service';
 import { ServerModalComponent } from './server-modal/server-modal.component';
 import { Server} from './../../../source/DTO/servers';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import {guid} from "dyna-guid";
 
 @Component({
@@ -11,24 +12,68 @@ import {guid} from "dyna-guid";
 })
 export class HomePage implements OnInit {
   public servers:Server[];
-  constructor(private modalCreator: ModalController)
+  constructor(private modalCreator: ModalController,private service:StrogeManagerService,private alertController: AlertController)
 {}
   async ngOnInit() {
-    let server=new Server();
-    server.user="root";
-    server.id=guid();
-    server.password="kNPsst5H2arhsUB"
-    server.name="may Server";
-    server.address="193.149.129.68"
-    await ( window as any).properties.validateServer(server,this.setOs);
+    this.getServers()
+  }
+  getServers() {
+    this.servers = this.service.getServers();
   }
   setOs(Os){
    this.servers=Os;
     console.log(this.servers);
 
   }
+  async deleteServer(item:Server){
+    const alert = await this.alertController.create({
+      header: 'سرور حذف شود?',
+      buttons: [
+        {
+          text: 'انصراف',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'تایید',
+          role: 'confirm',
+          handler: async () => {
+            await this.service.deleteServers(item);
+            this.getServers();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+ 
+
+  }
   async addServer(){
-    const modal = await this.modalCreator.create({component:ServerModalComponent})
+    let server=new Server();
+        server.id=guid();
+    const modal = await this.modalCreator.create({component:ServerModalComponent,componentProps:{
+      server:server,
+      isEdit:false
+    }})
     modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    if (role === 'confirm') {
+      this.servers = this.service.getServers();
+    }
+
+  }
+  async editServer(item){
+    const modal = await this.modalCreator.create({component:ServerModalComponent,componentProps:{
+      server:item,
+      isEdit:true
+    }})
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    if (role === 'confirm') {
+      this.servers = this.service.getServers();
+    }
+
   }
 }

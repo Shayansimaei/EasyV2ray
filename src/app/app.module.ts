@@ -1,3 +1,4 @@
+import { StrogeManagerService } from './stroge-manager.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -20,7 +21,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
             deps: [HttpClient]
         }
     })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },StrogeManagerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

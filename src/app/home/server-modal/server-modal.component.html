@@ -1,17 +1,38 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button (click)="cancel()">Cancel</ion-button>
+          <ion-button color="danger" (click)="cancel()">{{'cancel'|translate}} </ion-button>
         </ion-buttons>
-        <ion-title>Welcome</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+        <ion-title>{{server.name}}</ion-title>
+        <ion-buttons slot="end" color="secondary">
+          <ion-button  (click)="confirm()" [strong]="true">{{'confirm'|translate}}</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-item>
-        <ion-label position="stacked">Enter your name</ion-label>
-        <ion-input type="text" placeholder="Your name" ></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" size-md="6" size-lg="4"> 
+            <ion-item>
+            <ion-input type="text" [placeholder]="'serverName'|translate" [(ngModel)]="server.name"></ion-input>
+          </ion-item>
+          </ion-col>
+          <ion-col size="6" size-md="5" size-lg="3"> 
+            <ion-item>
+            <ion-input type="text" [placeholder]="'serverAddress'|translate" [(ngModel)]="server.address" ></ion-input>
+         </ion-item>
+          </ion-col>
+          <ion-col size="4" size-md="4" size-lg="3"> 
+            <ion-item>
+            <ion-input type="text" [placeholder]="'serverUser'|translate" [(ngModel)]="server.user" ></ion-input>
+        </ion-item>
+          </ion-col>
+          <ion-col size="4" size-md="4" size-lg="3"> 
+            <ion-item>
+            <ion-input type="password" [placeholder]="'serverPassword'|translate" [(ngModel)]="server.password" ></ion-input>
+          </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
     </ion-content>
