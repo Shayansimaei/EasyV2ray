@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { StrogeManagerService } from './../stroge-manager.service';
 import { ServerModalComponent } from './server-modal/server-modal.component';
 import { Server} from './../../../source/DTO/servers';
@@ -12,7 +13,11 @@ import {guid} from "dyna-guid";
 })
 export class HomePage implements OnInit {
   public servers:Server[];
-  constructor(private modalCreator: ModalController,private service:StrogeManagerService,private alertController: AlertController)
+  constructor(
+    public translate: TranslateService,
+    private modalCreator: ModalController,
+    private service:StrogeManagerService,
+    private alertController: AlertController)
 {}
   async ngOnInit() {
     this.getServers()
@@ -27,16 +32,16 @@ export class HomePage implements OnInit {
   }
   async deleteServer(item:Server){
     const alert = await this.alertController.create({
-      header: 'سرور حذف شود?',
+      header: this.translate.instant("deletingServer"),
       buttons: [
         {
-          text: 'انصراف',
+          text: this.translate.instant("cancel"),
           role: 'cancel',
           handler: () => {
           },
         },
         {
-          text: 'تایید',
+          text: this.translate.instant("confirm"),
           role: 'confirm',
           handler: async () => {
             await this.service.deleteServers(item);

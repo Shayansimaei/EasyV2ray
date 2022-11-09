@@ -1,10 +1,15 @@
 {
- "noServer": "سروری یافت نشد با زدن دکمه + میتوانید با افزودن مشخصات سرور VPN جدید بسازید",
- "text": "This is a simple demonstration app for ngx-translate",
- "serverName":"نام سرور",
- "serverAddress":"ادرس سرور",
- "serverUser":"نام کاربری سرور",
- "serverPassword":"رمز عبور سرور",
- "cancel":"انصراف",
- "confirm":"تایید"
+    "noServer": "سروری یافت نشد با زدن دکمه + میتوانید با افزودن مشخصات سرور VPN جدید بسازید",
+    "text": "This is a simple demonstration app for ngx-translate",
+    "serverName": "نام سرور",
+    "serverAddress": "ادرس سرور",
+    "serverUser": "نام کاربری سرور",
+    "serverPassword": "رمز عبور سرور",
+    "cancel": "انصراف",
+    "confirm": "تایید",
+    "deletingServer": "سرور حذف شود?",
+    "error": "خطا",
+    "allFieldsAreRequired": " همه مقادیر الزامی است",
+    "fieldsDon'tFillCorrectly":"مقادیر به درستی پرنشده است",
+    "ok":"متوجه شدم"
 }

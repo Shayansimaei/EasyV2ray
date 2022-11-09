@@ -34,11 +34,12 @@ function runCmd(server, cmd, callback, mainCallback) {
     user: server.user,
     pass: server.password
   });
-  return (ssh.exec(cmd, {
+  ssh.exec(cmd, {
     out: function (stdout) {
       return callback(stdout, mainCallback);
     }
-  }).start());
+  }).start();
+  ssh.end();
 }
 function easyInstallFunc(server, callback){
 
