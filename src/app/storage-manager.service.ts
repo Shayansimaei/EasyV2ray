@@ -1,11 +1,10 @@
-import { Server } from './../../source/DTO/servers';
+import { Server } from '../../source/DTO/servers';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StrogeManagerService {
-
+export class StorageManagerService {
   constructor() { }
   getServers():Server[]{
     let servers=JSON.parse(localStorage.getItem("servers"))||[];

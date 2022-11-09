@@ -11,5 +11,7 @@
     "error": "خطا",
     "allFieldsAreRequired": " همه مقادیر الزامی است",
     "fieldsDon'tFillCorrectly":"مقادیر به درستی پرنشده است",
-    "ok":"متوجه شدم"
+    "ok":"متوجه شدم",
+    "connectionError":"خطا در برقراری سرور",
+    "makeSureSerIsLinux":"مطمن شوید سرور لینوکسی استs"
 }

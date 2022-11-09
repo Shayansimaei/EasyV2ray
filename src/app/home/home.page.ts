@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { StrogeManagerService } from './../stroge-manager.service';
+import { StorageManagerService } from '../storage-manager.service';
 import { ServerModalComponent } from './server-modal/server-modal.component';
 import { Server} from './../../../source/DTO/servers';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   constructor(
     public translate: TranslateService,
     private modalCreator: ModalController,
-    private service:StrogeManagerService,
+    private service:StorageManagerService,
     private alertController: AlertController)
 {}
   async ngOnInit() {
@@ -25,11 +25,7 @@ export class HomePage implements OnInit {
   getServers() {
     this.servers = this.service.getServers();
   }
-  setOs(Os){
-   this.servers=Os;
-    console.log(this.servers);
 
-  }
   async deleteServer(item:Server){
     const alert = await this.alertController.create({
       header: this.translate.instant("deletingServer"),
@@ -50,10 +46,7 @@ export class HomePage implements OnInit {
         },
       ],
     });
-
     await alert.present();
- 
-
   }
   async addServer(){
     let server=new Server();
@@ -81,4 +74,12 @@ export class HomePage implements OnInit {
     }
 
   }
+  async runV2ray(item){
+    await (window as any ).properties.easyInstall(item,edit)
+    function edit(server){
+      this.servers = this.service.getServers();
+
+    }
+  }
+
 }
